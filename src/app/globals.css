@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-oceanic), serif;
+  --font-sans: var(--font-gilroy), sans-serif;
+  --color-navy: #011845;
+
+  --spacing-container: 120px;
+
+  --color-glow: #34508a;
+  --color-decor: #496192;
+
+  /* Текст */
+  --color-text: #ffffff;
+  --color-heading: #e8edff;
+
+  /* Акцент */
+  --color-accent: #e9663d;
+}
+
+.container-x {
+  padding-inline: 25px; /* мобилка по умолчанию */
+}
+
+@media (min-width: 768px) {
+  .container-x {
+    padding-inline: 140px; /* планшет */
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-x {
+    padding-inline: 120px; /* десктоп */
+  }
+}
