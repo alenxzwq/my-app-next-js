@@ -3,13 +3,11 @@ import Container from "@/components/Container";
 export default function Promo() {
   return (
     <section className="relative overflow-x-clip pb-12 pt-24 md:overflow-visible md:pb-28 md:pt-44 lg:pb-32 lg:pt-52 xl:pt-56">
-      {/* Эллипс-свечение */}
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-glow blur-[120px] md:h-[380px] md:w-[380px] md:blur-[140px] lg:h-[500px] lg:w-[500px] lg:blur-[170px] xl:h-[617px] xl:w-[617px] xl:blur-[200px]"
       />
 
-      {/* Фоновая надпись AQUARIM — растягивается по ширине экрана */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-5 z-0 select-none text-center font-serif text-[16vw] font-normal uppercase leading-[100%] text-decor"
@@ -18,7 +16,7 @@ export default function Promo() {
       </div>
 
       <Container className="relative">
-        {/* ===== МОБИЛЬНОЕ ФОТО (< md) ===== */}
+
         <div className="pointer-events-none absolute -right-5 top-[-10px] md:hidden">
           <img
             src="/photo/photo-promo.png"
@@ -27,7 +25,6 @@ export default function Promo() {
           />
         </div>
 
-        {/* ===== ДЕСКТОПНОЕ ФОТО (md+) ===== */}
         <div className="pointer-events-none absolute bottom-0 left-1/2 hidden -translate-x-1/2 md:bottom-[-20px] md:block lg:bottom-[-30px] xl:bottom-[-40px]">
           <img
             src="/photo/photo-promo.png"
@@ -42,19 +39,16 @@ export default function Promo() {
           />
         </div>
 
-        {/* Сетка */}
         <div className="grid grid-cols-1 gap-0 md:grid-cols-[1fr_140px_1fr] md:gap-x-2 md:gap-y-8 lg:grid-cols-[1fr_180px_1fr] lg:gap-x-6 lg:gap-y-10 xl:grid-cols-[1fr_280px_1fr] xl:gap-x-8 xl:gap-y-12">
-          {/* ЛЕВЫЙ ЗАГОЛОВОК */}
+
           <h2 className="order-1 font-serif text-[42px] font-medium uppercase leading-[100%] tracking-[0em] text-heading md:order-none md:col-start-1 md:row-start-1 md:mt-[30px] md:text-[36px] lg:text-[52px] xl:text-[80px]">
             Рыбный
           </h2>
 
-          {/* ПРАВЫЙ ЗАГОЛОВОК */}
           <h2 className="order-2 font-serif text-[42px] font-medium uppercase leading-[100%] tracking-[0em] text-heading md:order-none md:col-start-3 md:row-start-1 md:mt-[30px] md:text-[36px] lg:text-[52px] xl:text-[80px]">
             Ресторан
           </h2>
 
-          {/* ЛЕВЫЙ ТЕКСТ + КНОПКА */}
           <div className="order-3 mt-[20px] flex flex-col md:order-none md:col-start-1 md:row-start-2 md:mt-[30px] md:self-end lg:mt-[40px]">
             <p className="max-w-[330px] font-sans text-[12px] font-normal leading-[120%] text-white md:max-w-none md:text-[11px] lg:text-[14px] xl:text-[18px]">
               Откройте для себя мир изысканных вкусов с нашими рыбными
@@ -69,7 +63,6 @@ export default function Promo() {
             </button>
           </div>
 
-          {/* ПРАВЫЕ ФИЧИ */}
           <ul className="order-4 mt-[20px] flex flex-col gap-4 md:order-none md:col-start-3 md:row-start-2 md:mb-[40px] md:mt-[30px] md:gap-3 md:self-end lg:mb-[60px] lg:mt-[40px] lg:gap-5 lg:ml-[20px] xl:mb-[80px] xl:ml-[40px] xl:gap-6">
             <Feature
               text="Свежая рыба из наших аквариумов — гарантированная свежесть"
