@@ -16,7 +16,6 @@ export default function Promo() {
       </div>
 
       <Container className="relative">
-
         <div className="pointer-events-none absolute -right-5 top-[-10px] md:hidden">
           <img
             src="/photo/photo-promo.png"
@@ -40,7 +39,6 @@ export default function Promo() {
         </div>
 
         <div className="grid grid-cols-1 gap-0 md:grid-cols-[1fr_140px_1fr] md:gap-x-2 md:gap-y-8 lg:grid-cols-[1fr_180px_1fr] lg:gap-x-6 lg:gap-y-10 xl:grid-cols-[1fr_280px_1fr] xl:gap-x-8 xl:gap-y-12">
-
           <h2 className="order-1 font-serif text-[42px] font-medium uppercase leading-[100%] tracking-[0em] text-heading md:order-none md:col-start-1 md:row-start-1 md:mt-[30px] md:text-[36px] lg:text-[52px] xl:text-[80px]">
             Рыбный
           </h2>
@@ -57,7 +55,17 @@ export default function Promo() {
 
             <button
               type="button"
-              className="mt-[20px] flex h-[64px] w-full items-center justify-center bg-accent font-sans text-[20px] font-medium leading-[140%] text-heading transition-opacity hover:opacity-90 min-[450px]:w-[240px] md:mt-[30px] md:h-[50px] md:w-[160px] lg:h-[64px] lg:w-[220px] xl:h-[74px] xl:w-[285px]"
+              className="
+    mt-[20px] flex h-[64px] w-full items-center justify-center
+    bg-[#E9663D] ring-1 ring-inset ring-transparent
+    font-sans text-[20px] font-medium leading-[140%] text-white
+    transition-colors duration-200
+    hover:bg-[#011845] hover:text-[#E8EDFF] hover:ring-[#E8EDFF]
+    min-[450px]:w-[240px]
+    md:mt-[30px] md:h-[50px] md:w-[160px]
+    lg:h-[64px] lg:w-[220px]
+    xl:h-[74px] xl:w-[285px]
+  "
             >
               Меню
             </button>

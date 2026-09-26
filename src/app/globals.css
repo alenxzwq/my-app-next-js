@@ -16,6 +16,9 @@
 
   /* Акцент */
   --color-accent: #e9663d;
+
+  --breakpoint-tablet: 1100px;
+  --breakpoint-desktop: 1440px;
 }
 
 .container-x {
