@@ -34,50 +34,66 @@ export default function Delivery() {
           <span className="block">Доставка по Москве и МО</span>
         </h2>
 
-        {/* ============ ПЛАНШЕТ: заголовок → фото → 2 колонки блоков ============ */}
-        <div className="lg:hidden">
-          {/* Фото */}
-          <div className="mb-16 flex justify-center">
+        {/* ============ МОБИЛКА ============ */}
+        <div className="flex flex-col gap-12 min-[600px]:hidden">
+          <div>
+            <img
+              src="/photo/delivery.png"
+              alt="Курьер на мотоцикле"
+              className="h-auto w-full object-cover"
+            />
+          </div>
+
+          {leftItems.map((item) => (
+            <DeliveryItem key={item.number} {...item} />
+          ))}
+          <DeliveryItem {...rightItem} />
+        </div>
+
+        {/* ============ ПЛАНШЕТ ============ */}
+        <div className="hidden min-[600px]:block lg:hidden">
+          {/* Фото на всю ширину */}
+          <div className="mb-16">
             <img
               src="/photo/delivery-tablet.png"
               alt="Курьер на мотоцикле"
-              className="h-[400px] w-[750px] object-cover"
+              className="h-auto w-full object-cover"
             />
           </div>
 
           {/* Блоки: слева 01/02, справа 03 */}
           <div className="grid grid-cols-2 gap-8">
-            <div className="flex flex-col gap-12">
+            <div className="flex flex-col gap-12 pr-8">
               {leftItems.map((item) => (
                 <DeliveryItem key={item.number} {...item} />
               ))}
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col pr-8">
               <DeliveryItem {...rightItem} />
             </div>
           </div>
         </div>
 
-        {/* ============ ДЕСКТОП: 01/02 слева, ФОТО по центру, 03 справа ============ */}
+        {/* ============ ДЕСКТОП ============ */}
         <div className="hidden lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-16">
-          {/* Левая колонка: 01 + 02 */}
-          <div className="flex flex-col gap-16">
+          {/* Левая колонка */}
+          <div className="flex flex-col gap-16 pr-8">
             {leftItems.map((item) => (
               <DeliveryItem key={item.number} {...item} />
             ))}
           </div>
 
-          {/* Центр: фото */}
-          <div className="flex justify-center">
+          {/* Центр: фото на всю ширину центральной колонки */}
+          <div className="w-full">
             <img
               src="/photo/delivery.png"
               alt="Курьер на мотоцикле"
-              className="h-[430px] w-[480px] object-cover"
+              className="h-auto w-full object-cover"
             />
           </div>
 
-          {/* Правая колонка: 03 */}
-          <div className="flex flex-col">
+          {/* Правая колонка */}
+          <div className="flex flex-col pr-8">
             <DeliveryItem {...rightItem} />
           </div>
         </div>
@@ -103,4 +119,3 @@ function DeliveryItem({ number, title, text }) {
     </div>
   );
 }
-de;
