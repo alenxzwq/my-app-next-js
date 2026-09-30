@@ -23,7 +23,7 @@ export default function Delivery() {
   return (
     <section className="relative overflow-x-clip py-24 min-[600px]:py-28 lg:py-48">
       <Container className="relative">
-        {/* Заголовок — как в предыдущих блоках */}
+        {/* Заголовок */}
         <h2 className="mb-20 font-serif text-[28px] font-medium uppercase leading-[1.05] text-heading min-[600px]:text-[36px] lg:mb-24 lg:text-[56px]">
           <div className="flex flex-col items-start gap-2 lg:flex-row lg:items-center lg:gap-[120px]">
             <span className="shrink-0 font-sans text-xs font-medium normal-case text-heading">
@@ -34,29 +34,49 @@ export default function Delivery() {
           <span className="block">Доставка по Москве и МО</span>
         </h2>
 
-        {/* Контент: слева 2 блока, в центре фото, справа 1 блок */}
-        <div className="grid grid-cols-1 gap-12 min-[600px]:grid-cols-[1fr_auto_1fr] min-[600px]:items-center min-[600px]:gap-8 lg:gap-16">
-          {/* ЛЕВАЯ КОЛОНКА — 2 блока */}
-          <div className="flex flex-col gap-12 lg:gap-16">
+        {/* ============ ПЛАНШЕТ: заголовок → фото → 2 колонки блоков ============ */}
+        <div className="lg:hidden">
+          {/* Фото */}
+          <div className="mb-16 flex justify-center">
+            <img
+              src="/photo/delivery-tablet.png"
+              alt="Курьер на мотоцикле"
+              className="h-[400px] w-[750px] object-cover"
+            />
+          </div>
+
+          {/* Блоки: слева 01/02, справа 03 */}
+          <div className="grid grid-cols-2 gap-8">
+            <div className="flex flex-col gap-12">
+              {leftItems.map((item) => (
+                <DeliveryItem key={item.number} {...item} />
+              ))}
+            </div>
+            <div className="flex flex-col">
+              <DeliveryItem {...rightItem} />
+            </div>
+          </div>
+        </div>
+
+        {/* ============ ДЕСКТОП: 01/02 слева, ФОТО по центру, 03 справа ============ */}
+        <div className="hidden lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-16">
+          {/* Левая колонка: 01 + 02 */}
+          <div className="flex flex-col gap-16">
             {leftItems.map((item) => (
               <DeliveryItem key={item.number} {...item} />
             ))}
           </div>
 
-          {/* ЦЕНТР — фото */}
-          <div className="order-first flex justify-center min-[600px]:order-none">
+          {/* Центр: фото */}
+          <div className="flex justify-center">
             <img
               src="/photo/delivery.png"
               alt="Курьер на мотоцикле"
-              className="
-      h-auto w-full max-w-[420px] object-cover
-      min-[600px]:h-[300px] min-[600px]:w-[340px]
-      lg:h-[430px] lg:w-[480px]
-    "
+              className="h-[430px] w-[480px] object-cover"
             />
           </div>
 
-          {/* ПРАВАЯ КОЛОНКА — 1 блок */}
+          {/* Правая колонка: 03 */}
           <div className="flex flex-col">
             <DeliveryItem {...rightItem} />
           </div>
@@ -69,7 +89,7 @@ export default function Delivery() {
 function DeliveryItem({ number, title, text }) {
   return (
     <div className="flex flex-col gap-3">
-      <span className="font-serif text-[28px] font-normal uppercase leading-[1.05] text-heading min-[600px]:text-[32px] lg:text-[36px]">
+      <span className="font-serif text-[28px] font-normal uppercase leading-[1.05] text-heading min-[600px]:text-[28px] lg:text-[36px]">
         {number}
       </span>
 
@@ -83,3 +103,4 @@ function DeliveryItem({ number, title, text }) {
     </div>
   );
 }
+de;
