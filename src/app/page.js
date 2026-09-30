@@ -1,6 +1,7 @@
 import Promo from "@/components/sections/promo";
 import About from "@/components/sections/about";
 import Menu from "@/components/sections/menu";
+import Delivery from "@/components/sections/delivery";
 
 const menuDishes = [
   {
@@ -36,6 +37,7 @@ export default function Home() {
         dishes={menuDishes}
         ctaLabel="Перейти в меню"
       />
+      <Delivery />
     </main>
   );
 }
