@@ -11,14 +11,31 @@ export default function Menu({
   ctaLabel = "Перейти в меню",
 }) {
   const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [animating, setAnimating] = useState(false);
+
   const dish = dishes[current];
 
+  function changeSlide(newIndex, dir) {
+    if (animating) return;
+
+    setDirection(dir);
+    setAnimating(true);
+
+    setTimeout(() => {
+      setCurrent(newIndex);
+      setAnimating(false);
+    }, 200);
+  }
+
   function prev() {
-    setCurrent((i) => (i - 1 + dishes.length) % dishes.length);
+    const newIndex = (current - 1 + dishes.length) % dishes.length;
+    changeSlide(newIndex, -1);
   }
 
   function next() {
-    setCurrent((i) => (i + 1) % dishes.length);
+    const newIndex = (current + 1) % dishes.length;
+    changeSlide(newIndex, 1);
   }
 
   return (
@@ -37,9 +54,21 @@ export default function Menu({
 
         {/* Слайдер */}
         <div className="relative">
-          {/* Синий прямоугольник */}
           <div className="relative bg-decor px-6 py-8 min-[600px]:px-10 min-[600px]:py-10 lg:px-16 lg:py-12">
-            <div className="grid grid-cols-1 items-center gap-8 min-[600px]:grid-cols-2 min-[600px]:gap-6 lg:gap-16">
+            <div
+              className={`
+                grid grid-cols-1 items-center gap-8
+                min-[600px]:grid-cols-2 min-[600px]:gap-6 lg:gap-16
+                transition-all duration-200 ease-out
+                ${
+                  animating
+                    ? direction === 1
+                      ? "-translate-x-4 opacity-0"
+                      : "translate-x-4 opacity-0"
+                    : "translate-x-0 opacity-100"
+                }
+              `}
+            >
               {/* Левая колонка: текст */}
               <div className="flex min-w-0 flex-col gap-6">
                 <h3 className="font-serif text-[24px] font-normal uppercase leading-[1.2] text-heading min-[600px]:text-[28px] lg:text-[36px]">
@@ -50,7 +79,6 @@ export default function Menu({
                   {dish.description}
                 </p>
 
-                {/* Цена слева, вес справа */}
                 <div className="flex w-full items-baseline justify-between">
                   <span className="font-sans text-[16px] font-semibold leading-[1.4] text-heading min-[600px]:text-[18px]">
                     {dish.price}
@@ -62,7 +90,6 @@ export default function Menu({
                   )}
                 </div>
 
-                {/* Кнопка с ховером — явные цвета */}
                 <button
                   type="button"
                   className="
@@ -100,22 +127,34 @@ export default function Menu({
                 type="button"
                 onClick={prev}
                 aria-label="Предыдущее блюдо"
-                className="absolute left-[10px] top-1/2 z-20 -translate-y-1/2 ..."
+                className="absolute left-[10px] top-1/2 z-20 -translate-y-1/2 text-heading transition-opacity hover:opacity-70"
               >
-                <img src="/icons/chevron-left.svg" alt="" className="h-6 w-6" />
+                <svg width="21" height="24" viewBox="0 0 21 24" fill="none">
+                  <path
+                    d="M14 6L8 12L14 18"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </button>
 
               <button
                 type="button"
                 onClick={next}
                 aria-label="Следующее блюдо"
-                className="absolute right-[10px] top-1/2 z-20 -translate-y-1/2 ..."
+                className="absolute right-[10px] top-1/2 z-20 -translate-y-1/2 text-heading transition-opacity hover:opacity-70"
               >
-                <img
-                  src="/icons/chevron-right.svg"
-                  alt=""
-                  className="h-6 w-6"
-                />
+                <svg width="21" height="24" viewBox="0 0 21 24" fill="none">
+                  <path
+                    d="M7 6L13 12L7 18"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </button>
             </>
           )}
