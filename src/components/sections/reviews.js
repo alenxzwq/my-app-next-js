@@ -75,8 +75,8 @@ export default function Reviews({
   return (
     <section className="relative overflow-x-clip py-24 min-[600px]:py-28 lg:py-48">
       <Container className="relative">
-        {/* Заголовок — как в предыдущих блоках */}
-        <h2 className="mb-12 font-serif text-[28px] font-medium uppercase leading-[1.05] text-heading min-[600px]:text-[36px] lg:mb-16 lg:text-[56px]">
+        {/* Заголовок */}
+        <h2 className="mb-12 font-serif text-[28px] font-medium uppercase leading-[1.05] text-heading min-[600px]:text-[28px] lg:mb-16 lg:text-[56px]">
           <div className="flex flex-col items-start gap-2 lg:flex-row lg:items-center lg:gap-[120px]">
             <span className="shrink-0 font-sans text-xs font-medium normal-case text-heading">
               {caption}
@@ -92,8 +92,8 @@ export default function Reviews({
             {description}
           </p>
 
-          {/* Стрелки — по нижнему краю текста */}
-          <div className="mt-6 flex justify-end gap-4 lg:absolute lg:bottom-0 lg:right-0 lg:mt-0">
+          {/* Стрелки — только на планшете и десктопе */}
+          <div className="hidden min-[600px]:absolute min-[600px]:bottom-0 min-[600px]:right-0 min-[600px]:flex min-[600px]:gap-4">
             <button
               type="button"
               onClick={() => scrollBy(-1)}

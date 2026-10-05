@@ -2,7 +2,7 @@ import Container from "@/components/Container";
 
 export default function About() {
   return (
-    <section className="relative py-24 lg:py-32">
+    <section className="relative overflow-x-clip py-16 min-[600px]:py-20 lg:py-24">
       {/* Эллипс */}
       <div
         aria-hidden
