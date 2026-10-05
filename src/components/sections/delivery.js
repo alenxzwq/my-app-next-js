@@ -36,11 +36,22 @@ export default function Delivery() {
 
         {/* ============ МОБИЛКА ============ */}
         <div className="flex flex-col gap-12 min-[600px]:hidden">
-          <div>
+          {/* Фото + эллипс за ним */}
+          <div className="relative">
+            {/* Эллипс — ПОСЛЕ фото в DOM, но с z-index: -1 через style */}
             <img
               src="/photo/delivery.png"
               alt="Курьер на мотоцикле"
-              className="h-auto w-full object-cover"
+              className="relative h-auto w-full object-cover"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px]"
+              style={{
+                background:
+                  "linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), #4164AB",
+                zIndex: -1,
+              }}
             />
           </div>
 
@@ -52,16 +63,23 @@ export default function Delivery() {
 
         {/* ============ ПЛАНШЕТ ============ */}
         <div className="hidden min-[600px]:block lg:hidden">
-          {/* Фото на всю ширину */}
-          <div className="mb-16">
+          <div className="relative mb-16">
             <img
               src="/photo/delivery-tablet.png"
               alt="Курьер на мотоцикле"
-              className="h-auto w-full object-cover"
+              className="relative h-auto w-full object-cover"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[140px]"
+              style={{
+                background:
+                  "linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), #4164AB",
+                zIndex: -1,
+              }}
             />
           </div>
 
-          {/* Блоки: слева 01/02, справа 03 */}
           <div className="grid grid-cols-2 gap-8">
             <div className="flex flex-col gap-12 pr-8">
               {leftItems.map((item) => (
@@ -76,23 +94,29 @@ export default function Delivery() {
 
         {/* ============ ДЕСКТОП ============ */}
         <div className="hidden lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-16">
-          {/* Левая колонка */}
           <div className="flex flex-col gap-16 pr-8">
             {leftItems.map((item) => (
               <DeliveryItem key={item.number} {...item} />
             ))}
           </div>
 
-          {/* Центр: фото на всю ширину центральной колонки */}
-          <div className="w-full">
+          <div className="relative w-full">
             <img
               src="/photo/delivery.png"
               alt="Курьер на мотоцикле"
-              className="h-auto w-full object-cover"
+              className="relative h-auto w-full object-cover"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[200px]"
+              style={{
+                background:
+                  "linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), #4164AB",
+                zIndex: -1,
+              }}
             />
           </div>
 
-          {/* Правая колонка */}
           <div className="flex flex-col pr-8">
             <DeliveryItem {...rightItem} />
           </div>

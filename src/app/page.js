@@ -26,6 +26,30 @@ const menuDishes = [
   },
 ];
 
+const promoDishes = [
+  {
+    id: 1,
+    title: "Скидка 15% на первый заказ",
+    description:
+      "Воспользуйтесь этой прекрасной возможностью и откройте для себя мир изысканных морских деликатесов, которыми славится наш ресторан",
+    price: "",
+    weight: "",
+    image: "/photo/dishes_slider_2.png",
+    buttonLabel: "Забрать скидку",
+  },
+  {
+    id: 2,
+    title: "Скидка 15% на первый заказ",
+    description:
+      "Воспользуйтесь этой прекрасной возможностью и откройте для себя мир изысканных морских деликатесов, которыми славится наш ресторан",
+    price: "",
+    weight: "",
+    image: "/photo/dishes_slider_2.png",
+    buttonLabel: "Забрать скидку",
+  },
+  // ...
+];
+
 export default function Home() {
   return (
     <main>
@@ -40,6 +64,14 @@ export default function Home() {
       />
       <Delivery />
       <Reviews />
+      <Menu
+        caption="Акции"
+        title="Оазис выгодных"
+        titleLine2="предложений"
+        dishes={promoDishes}
+        ctaLabel="Все акции"
+        className="pb-24 pt-20 min-[600px]:pb-28 min-[600px]:pt-12 lg:pb-48 lg:pt-16"
+      />
     </main>
   );
 }

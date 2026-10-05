@@ -9,6 +9,7 @@ export default function Menu({
   titleLine2,
   dishes,
   ctaLabel = "Перейти в меню",
+  className = "py-24 min-[600px]:py-28 lg:py-48",
 }) {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -64,7 +65,7 @@ export default function Menu({
   }
 
   return (
-    <section className="relative overflow-x-clip py-16 min-[600px]:py-20 lg:py-24">
+    <section className={`relative overflow-x-clip ${className}`}>
       <Container className="relative">
         {/* Заголовок */}
         <h2 className="mb-20 font-serif text-[28px] font-medium uppercase leading-[1.05] text-heading min-[600px]:text-[36px] lg:mb-24 lg:text-[56px]">

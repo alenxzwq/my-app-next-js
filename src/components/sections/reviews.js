@@ -73,7 +73,7 @@ export default function Reviews({
   }
 
   return (
-    <section className="relative overflow-x-clip py-24 min-[600px]:py-28 lg:py-48">
+    <section className="relative z-0 overflow-x-clip py-24 min-[600px]:py-28 lg:py-48">
       <Container className="relative">
         {/* Заголовок */}
         <h2 className="mb-12 font-serif text-[28px] font-medium uppercase leading-[1.05] text-heading min-[600px]:text-[28px] lg:mb-16 lg:text-[56px]">
@@ -130,8 +130,25 @@ export default function Reviews({
           </div>
         </div>
 
-        {/* Слайдер отзывов */}
+        {/* Слайдер отзывов + эллипс за ним */}
         <div className="relative">
+          {/* Эллипс — слева, наполовину за краем, по центру слайдера */}
+          <div
+            aria-hidden
+            className="
+              pointer-events-none absolute
+              left-[-200px] top-1/2
+              h-[406px] w-[406px]
+              -translate-y-1/2
+              rounded-full blur-[200px]
+            "
+            style={{
+              background:
+                "linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), #4164AB",
+              zIndex: -1,
+            }}
+          />
+
           <ul
             ref={scrollRef}
             className="
