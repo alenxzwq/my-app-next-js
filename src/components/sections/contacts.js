@@ -26,9 +26,9 @@ export default function Contacts() {
   return (
     <section className="relative z-0 overflow-x-clip py-16 min-[600px]:py-20 lg:py-24">
       <Container className="relative">
-        {/* Заголовок */}
-        <h2 className="mb-12 font-serif text-[28px] font-medium uppercase leading-[1.05] text-heading min-[600px]:text-[56px] lg:mb-16 lg:text-[56px]">
-          <div className="flex flex-col items-start gap-2 min-[600px]:gap-4 lg:flex-row lg:items-center lg:gap-[120px]">
+        {/* Заголовок — маленький до 1100px, крупный от 1100px */}
+        <h2 className="mb-10 font-serif text-[24px] font-medium uppercase leading-[1.05] text-heading min-[600px]:text-[24px] min-[1100px]:text-[56px] lg:mb-16">
+          <div className="flex flex-col items-start gap-2 min-[1100px]:flex-row min-[1100px]:items-center min-[1100px]:gap-[120px]">
             <span className="shrink-0 font-sans text-xs font-medium normal-case text-heading">
               Контакты
             </span>
@@ -37,28 +37,28 @@ export default function Contacts() {
           <span className="block">объединяющая людей</span>
         </h2>
 
-        {/* Контент: фото слева, инфо справа */}
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-          {/* ФОТО */}
-          <div>
+        {/* Контент: 2 колонки с планшета, растянуты по высоте */}
+        <div className="grid grid-cols-1 gap-8 min-[600px]:grid-cols-[1fr_1fr] min-[600px]:items-stretch min-[600px]:gap-6 min-[1100px]:gap-16">
+          {/* ФОТО — заполняет всю высоту колонки */}
+          <div className="min-[600px]:h-full">
             <img
               src="/photo/Contacts_img.png"
               alt="Атмосфера ресторана"
-              className="h-auto w-full object-cover"
+              className="h-full w-full object-cover"
             />
           </div>
 
           {/* ИНФО */}
-          <div className="flex flex-col gap-10">
+          <div className="flex min-w-0 flex-col gap-5 min-[600px]:gap-4 min-[1100px]:gap-10">
             {/* Вопросы */}
-            <div className="flex flex-col gap-5">
-              <h3 className="font-serif text-[24px] font-normal uppercase leading-[1.05] text-heading min-[600px]:text-[28px] lg:text-[36px]">
+            <div className="flex flex-col gap-2 min-[600px]:gap-2 min-[1100px]:gap-5">
+              <h3 className="font-serif text-[20px] font-normal uppercase leading-[1.05] text-heading min-[600px]:text-[18px] min-[1100px]:text-[36px]">
                 Если у вас
                 <br />
                 остались вопросы:
               </h3>
 
-              <ul className="flex flex-col gap-3">
+              <ul className="flex flex-col gap-2 min-[1100px]:gap-3">
                 {contacts.map((item) => (
                   <ContactItem key={item.id} {...item} />
                 ))}
@@ -66,12 +66,12 @@ export default function Contacts() {
             </div>
 
             {/* Адрес */}
-            <div className="flex flex-col gap-5">
-              <h3 className="font-serif text-[24px] font-normal uppercase leading-[1.05] text-heading min-[600px]:text-[28px] lg:text-[36px]">
+            <div className="flex flex-col gap-2 min-[600px]:gap-2 min-[1100px]:gap-5">
+              <h3 className="font-serif text-[20px] font-normal uppercase leading-[1.05] text-heading min-[600px]:text-[18px] min-[1100px]:text-[36px]">
                 Адрес:
               </h3>
 
-              <ul className="flex flex-col gap-3">
+              <ul className="flex flex-col gap-2 min-[1100px]:gap-3">
                 <ContactItem
                   icon="/icons/location.svg"
                   text="г. Москва, ул. Тверская, д.8"
@@ -80,14 +80,14 @@ export default function Contacts() {
             </div>
 
             {/* Соцсети */}
-            <div className="flex flex-col gap-5">
-              <h3 className="font-serif text-[24px] font-normal uppercase leading-[1.05] text-heading min-[600px]:text-[28px] lg:text-[36px]">
+            <div className="flex flex-col gap-2 min-[600px]:gap-2 min-[1100px]:gap-5">
+              <h3 className="font-serif text-[20px] font-normal uppercase leading-[1.05] text-heading min-[600px]:text-[18px] min-[1100px]:text-[36px]">
                 Мы в социальных
                 <br />
                 сетях:
               </h3>
 
-              <ul className="flex gap-3">
+              <ul className="flex gap-2 min-[1100px]:gap-3">
                 {socials.map((item) => (
                   <SocialItem key={item.id} {...item} />
                 ))}
@@ -100,17 +100,16 @@ export default function Contacts() {
   );
 }
 
-/* Иконка + текст — для телефона, почты, адреса */
 function ContactItem({ icon, text, href }) {
   const content = (
-    <div className="flex items-end gap-2">
+    <div className="flex items-center gap-2">
       <span
         aria-hidden
-        className="flex h-7 w-7 shrink-0 items-end justify-center"
+        className="flex h-4 w-4 shrink-0 items-center justify-center min-[1100px]:h-7 min-[1100px]:w-7"
       >
-        <img src={icon} alt="" className="h-7 w-7 object-contain" />
+        <img src={icon} alt="" className="h-full w-full object-contain" />
       </span>
-      <span className="font-sans text-[15px] leading-[1.4] text-heading lg:text-[18px]">
+      <span className="font-sans text-[12px] leading-[1.4] text-heading min-[600px]:text-[12px] min-[1100px]:text-[18px]">
         {text}
       </span>
     </div>
@@ -129,7 +128,6 @@ function ContactItem({ icon, text, href }) {
   return <li>{content}</li>;
 }
 
-/* Соцсеть — квадрат с фоном */
 function SocialItem({ icon, label, href }) {
   return (
     <li>
@@ -137,14 +135,18 @@ function SocialItem({ icon, label, href }) {
         href={href}
         aria-label={label}
         className="
-          flex h-[50px] w-[50px] items-center justify-center
+          flex h-[38px] w-[38px] items-center justify-center
           bg-decor
           transition-opacity hover:opacity-80
-          min-[600px]:h-[55px] min-[600px]:w-[55px]
-          lg:h-[60px] lg:w-[60px]
+          min-[600px]:h-[42px] min-[600px]:w-[42px]
+          min-[1100px]:h-[60px] min-[1100px]:w-[60px]
         "
       >
-        <img src={icon} alt="" className="h-11 w-11 object-contain" />
+        <img
+          src={icon}
+          alt=""
+          className="h-6 w-6 object-contain min-[600px]:h-7 min-[600px]:w-7 min-[1100px]:h-11 min-[1100px]:w-11"
+        />
       </a>
     </li>
   );
