@@ -64,7 +64,7 @@ export default function Reviews({
     if (!scrollRef.current) return;
 
     const container = scrollRef.current;
-    const itemWidth = 180 + 20; // ширина карточки + gap
+    const itemWidth = 180 + 20;
 
     container.scrollBy({
       left: direction * itemWidth * 2,
@@ -75,7 +75,6 @@ export default function Reviews({
   return (
     <section className="relative z-0 overflow-x-clip py-24 min-[600px]:py-28 lg:py-48">
       <Container className="relative">
-        {/* Заголовок */}
         <h2 className="mb-12 font-serif text-[28px] font-medium uppercase leading-[1.05] text-heading min-[600px]:text-[28px] lg:mb-16 lg:text-[56px]">
           <div className="flex flex-col items-start gap-2 lg:flex-row lg:items-center lg:gap-[120px]">
             <span className="shrink-0 font-sans text-xs font-medium normal-case text-heading">
@@ -86,13 +85,11 @@ export default function Reviews({
           <span className="block">{titleLine2}</span>
         </h2>
 
-        {/* Текст описания по центру + стрелки справа внизу */}
         <div className="relative mb-10 lg:mb-12">
           <p className="mx-auto max-w-[380px] text-left font-sans text-[14px] leading-[1.2] text-heading min-[600px]:text-[15px] lg:text-[18px]">
             {description}
           </p>
 
-          {/* Стрелки — только на планшете и десктопе */}
           <div className="hidden min-[600px]:absolute min-[600px]:bottom-0 min-[600px]:right-0 min-[600px]:flex min-[600px]:gap-4">
             <button
               type="button"
@@ -130,9 +127,7 @@ export default function Reviews({
           </div>
         </div>
 
-        {/* Слайдер отзывов + эллипс за ним */}
         <div className="relative">
-          {/* Эллипс — слева, наполовину за краем, по центру слайдера */}
           <div
             aria-hidden
             className="

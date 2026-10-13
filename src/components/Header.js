@@ -14,7 +14,6 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const headerRef = useRef(null);
 
-  // Закрытие меню по клику вне шапки
   useEffect(() => {
     if (!open) return;
 
@@ -29,12 +28,8 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header
-      ref={headerRef}
-      className="w-full bg-bg text-text"
-    >
+    <header ref={headerRef} className="w-full bg-bg text-text">
       <div className="container-x mx-auto flex max-w-[1440px] items-center justify-between py-[11.5px]">
-        {/* Логотип */}
         <Link
           href="/"
           className="font-serif text-2xl tracking-[0.15em] sm:text-3xl lg:text-4xl"
@@ -42,7 +37,6 @@ export default function Header() {
           AQUARIM
         </Link>
 
-        {/* Навигация — десктоп */}
         <nav className="hidden items-center gap-8 lg:flex xl:gap-12">
           {navLinks.map((link) => (
             <Link
@@ -56,14 +50,12 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-          {/* Корзина — десктоп */}
           <div className="hidden lg:block">
             <Link href="/cart" aria-label="Корзина">
               <img src="/icons/cart.svg" alt="" className="h-8 w-8" />
             </Link>
           </div>
 
-          {/* Бургер / крестик — планшет и мобилка */}
           <button
             aria-label={open ? "Закрыть меню" : "Открыть меню"}
             aria-expanded={open}

@@ -4,6 +4,7 @@ import Menu from "@/components/sections/menu";
 import Delivery from "@/components/sections/delivery";
 import Reviews from "@/components/sections/reviews";
 import Booking from "@/components/sections/booking";
+import Contacts from "@/components/sections/contacts";
 
 const menuDishes = [
   {
@@ -74,6 +75,7 @@ export default function Home() {
         className="pb-24 pt-20 min-[600px]:pb-28 min-[600px]:pt-12 lg:pb-48 lg:pt-16"
       />
       <Booking />
+      <Contacts />
     </main>
   );
 }
