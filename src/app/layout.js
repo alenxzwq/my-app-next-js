@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import Header from "@/components/Header";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 const oceanic = localFont({
   src: [
@@ -52,6 +53,7 @@ export default function RootLayout({ children }) {
       <body className="bg-navy font-sans text-white">
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
