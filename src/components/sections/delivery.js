@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Container from "@/components/Container";
 
 const leftItems = [
@@ -38,12 +39,7 @@ export default function Delivery() {
         <div className="flex flex-col gap-12 min-[600px]:hidden">
           {/* Фото + эллипс за ним */}
           <div className="relative">
-            {/* Эллипс — ПОСЛЕ фото в DOM, но с z-index: -1 через style */}
-            <img
-              src="/photo/delivery.png"
-              alt="Курьер на мотоцикле"
-              className="relative h-auto w-full object-cover"
-            />
+            {/* Эллипс — с z-index: -1, за фото */}
             <div
               aria-hidden
               className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px]"
@@ -53,6 +49,15 @@ export default function Delivery() {
                 zIndex: -1,
               }}
             />
+            <div className="relative h-auto w-full aspect-[4/3]">
+              <Image
+                src="/photo/delivery.png"
+                alt="Курьер на мотоцикле"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
           </div>
 
           {leftItems.map((item) => (
@@ -64,11 +69,6 @@ export default function Delivery() {
         {/* ============ ПЛАНШЕТ ============ */}
         <div className="hidden min-[600px]:block lg:hidden">
           <div className="relative mb-16">
-            <img
-              src="/photo/delivery-tablet.png"
-              alt="Курьер на мотоцикле"
-              className="relative h-auto w-full object-cover"
-            />
             <div
               aria-hidden
               className="pointer-events-none absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[140px]"
@@ -78,6 +78,15 @@ export default function Delivery() {
                 zIndex: -1,
               }}
             />
+            <div className="relative h-auto w-full aspect-[16/9]">
+              <Image
+                src="/photo/delivery-tablet.png"
+                alt="Курьер на мотоцикле"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-8">
@@ -101,11 +110,6 @@ export default function Delivery() {
           </div>
 
           <div className="relative w-full">
-            <img
-              src="/photo/delivery.png"
-              alt="Курьер на мотоцикле"
-              className="relative h-auto w-full object-cover"
-            />
             <div
               aria-hidden
               className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[200px]"
@@ -115,6 +119,15 @@ export default function Delivery() {
                 zIndex: -1,
               }}
             />
+            <div className="relative h-auto w-full aspect-[4/3]">
+              <Image
+                src="/photo/delivery.png"
+                alt="Курьер на мотоцикле"
+                fill
+                sizes="(max-width: 1280px) 50vw, 480px"
+                className="object-cover"
+              />
+            </div>
           </div>
 
           <div className="flex flex-col pr-8">

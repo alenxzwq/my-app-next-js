@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Container from "@/components/Container";
 
 export default function Booking() {
@@ -15,11 +16,14 @@ export default function Booking() {
         </h2>
 
         <div className="lg:hidden">
-          <div className="mb-10">
-            <img
+          {/* Мобилка и планшет — Image */}
+          <div className="relative mb-10 aspect-[4/3] w-full">
+            <Image
               src="/photo/booking_photo.png"
               alt="Стол у аквариума"
-              className="h-auto w-full object-cover"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
             />
           </div>
 
@@ -89,11 +93,14 @@ export default function Booking() {
             </button>
           </form>
 
-          <div className="lg:h-full">
-            <img
+          {/* Десктоп — Image с fill */}
+          <div className="relative h-full w-full min-h-[470px]">
+            <Image
               src="/photo/booking_photo.png"
               alt="Стол у аквариума"
-              className="h-full w-full object-cover"
+              fill
+              sizes="50vw"
+              className="object-cover"
             />
           </div>
         </div>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import Container from "@/components/Container";
 
 export default function Menu({
@@ -9,6 +11,7 @@ export default function Menu({
   titleLine2,
   dishes,
   ctaLabel = "Перейти в меню",
+  ctaHref = "/menu",
   className = "py-24 min-[600px]:py-28 lg:py-48",
 }) {
   const [current, setCurrent] = useState(0);
@@ -22,10 +25,8 @@ export default function Menu({
 
   function changeSlide(newIndex, dir) {
     if (animating) return;
-
     setDirection(dir);
     setAnimating(true);
-
     setTimeout(() => {
       setCurrent(newIndex);
       setAnimating(false);
@@ -101,23 +102,28 @@ export default function Menu({
                 }
               `}
             >
-              {/* ФОТО */}
+              {/* ФОТО — Image с fill */}
               <div className="relative order-1 flex justify-center min-[600px]:order-2 min-[600px]:justify-end">
-                <img
-                  src={dish.image}
-                  alt={dish.title}
-                  draggable={false}
+                <div
                   className="
                     pointer-events-none relative z-10
-                    h-auto w-full max-w-[260px] object-contain
+                    h-[260px] w-[260px]
                     -mt-20 mb-2
-                    min-[600px]:-my-6 min-[600px]:max-w-[200px]
-                    lg:-my-20 lg:max-w-[500px]
+                    min-[600px]:-my-6 min-[600px]:h-[280px] min-[600px]:w-[200px]
+                    lg:-my-20 lg:h-[400px] lg:w-[500px]
                   "
-                />
+                >
+                  <Image
+                    src={dish.image}
+                    alt={dish.title}
+                    fill
+                    sizes="(max-width: 600px) 260px, (max-width: 1024px) 200px, 500px"
+                    className="object-contain"
+                  />
+                </div>
               </div>
 
-              {/* ТЕКСТ + СТРЕЛКИ (только мобилка) */}
+              {/* ТЕКСТ + СТРЕЛКИ */}
               <div className="order-2 flex w-full min-w-0 flex-col gap-3 min-[600px]:order-1 min-[600px]:gap-3 lg:gap-6">
                 <h3 className="font-serif text-[24px] font-normal uppercase leading-[1.2] text-heading min-[600px]:text-[20px] lg:text-[36px]">
                   {dish.title}
@@ -258,10 +264,10 @@ export default function Menu({
           )}
         </div>
 
-        {/* Кнопка под слайдером */}
+        {/* Кнопка под слайдером — Link */}
         <div className="mt-16 flex justify-center lg:mt-24">
-          <button
-            type="button"
+          <Link
+            href={ctaHref}
             className="
               flex h-[50px] w-full items-center justify-center
               min-[600px]:h-[50px] min-[600px]:w-[200px]
@@ -274,7 +280,7 @@ export default function Menu({
             "
           >
             {ctaLabel}
-          </button>
+          </Link>
         </div>
       </Container>
     </section>

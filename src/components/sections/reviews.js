@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import Image from "next/image";
 import Container from "@/components/Container";
 
 const reviews = [
@@ -64,7 +65,7 @@ export default function Reviews({
     if (!scrollRef.current) return;
 
     const container = scrollRef.current;
-    const itemWidth = 180 + 20;
+    const itemWidth = 180 + 20; // ширина карточки + gap
 
     container.scrollBy({
       left: direction * itemWidth * 2,
@@ -158,14 +159,16 @@ export default function Reviews({
               <li
                 key={item.id}
                 className="
-                  h-[260px] w-[180px] shrink-0 snap-start
+                  relative h-[260px] w-[180px] shrink-0 snap-start
                   overflow-hidden bg-decor
                 "
               >
-                <img
+                <Image
                   src={item.image}
                   alt={item.alt}
-                  className="h-full w-full object-cover"
+                  fill
+                  sizes="180px"
+                  className="object-cover"
                 />
               </li>
             ))}

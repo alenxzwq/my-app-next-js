@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import Container from "@/components/Container";
 
 export default function About() {
@@ -14,7 +16,7 @@ export default function About() {
 
       <Container className="relative">
         <h2 className="mb-8 font-serif text-[28px] font-medium uppercase leading-[1.05] text-heading min-[800px]:mb-12 min-[800px]:text-[40px] lg:mb-16 lg:text-[56px]">
-          <span className="mb-3 block font-sans text-xs font-medium normal-case text-heading min-[800px]:mb-0 min-[800px]:inline-block min-[800px]:mr-8 lg:mr-[120px]">
+          <span className="mb-3 block font-sans text-xs font-medium normal-case text-heading min-[800px]:mb-0 min-[800px]:mr-8 min-[800px]:inline-block lg:mr-[120px]">
             О ресторане
           </span>
           <span className="inline">История рыбного </span>
@@ -22,14 +24,18 @@ export default function About() {
         </h2>
 
         <div className="flex flex-col gap-6 min-[800px]:grid min-[800px]:grid-cols-[1fr_1.4fr] min-[800px]:items-stretch min-[800px]:gap-8 lg:grid-cols-2 lg:gap-16">
-          <div className="order-1 flex min-w-0 justify-center min-[800px]:order-2 min-[800px]:justify-end">
-            <img
+          {/* ФОТО — Image из next/image */}
+          <div className="relative order-1 flex min-w-0 justify-center min-[800px]:order-2 min-[800px]:justify-end">
+            <Image
               src="/photo/photo-about.png"
               alt="Шеф-повар ресторана AQUARIM на фоне аквариума"
+              width={550}
+              height={470}
               className="h-auto w-full max-w-full object-cover min-[800px]:h-[294px] min-[800px]:w-auto lg:h-[400px]"
             />
           </div>
 
+          {/* ТЕКСТ + КНОПКА */}
           <div className="order-2 flex min-w-0 flex-col gap-8 min-[800px]:order-1 min-[800px]:h-full min-[800px]:gap-[50px]">
             <div className="flex flex-col gap-5">
               <p className="font-sans text-base leading-[1.4] text-heading lg:text-lg">
@@ -45,8 +51,9 @@ export default function About() {
               </p>
             </div>
 
-            <button
-              type="button"
+            {/* Кнопка — теперь ссылка на /about */}
+            <Link
+              href="/about"
               className="
                 flex h-[74px] w-full items-center justify-center
                 border border-heading bg-bg font-sans text-[20px] font-medium
@@ -57,7 +64,7 @@ export default function About() {
               "
             >
               Узнать больше
-            </button>
+            </Link>
           </div>
         </div>
       </Container>

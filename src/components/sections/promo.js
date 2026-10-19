@@ -1,13 +1,17 @@
+import Image from "next/image";
+import Link from "next/link";
 import Container from "@/components/Container";
 
 export default function Promo() {
   return (
     <section className="relative overflow-x-clip pb-12 pt-24 md:overflow-visible md:pb-28 md:pt-44 lg:pb-32 lg:pt-52 xl:pt-56">
+      {/* Эллипс-свечение */}
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-glow blur-[120px] md:h-[380px] md:w-[380px] md:blur-[140px] lg:h-[500px] lg:w-[500px] lg:blur-[170px] xl:h-[617px] xl:w-[617px] xl:blur-[200px]"
       />
 
+      {/* Фоновая надпись AQUARIM */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-5 z-0 select-none text-center font-serif text-[16vw] font-normal uppercase leading-[100%] text-decor"
@@ -16,20 +20,30 @@ export default function Promo() {
       </div>
 
       <Container className="relative">
+        {/* Фото на мобилке — справа вверху */}
         <div className="pointer-events-none absolute -right-5 top-[-10px] md:hidden">
-          <img
-            src="/photo/photo-promo.png"
-            alt="Креветка на вилке"
-            className="h-[200px] w-auto rotate-[-25deg] object-contain sm:h-[240px]"
-          />
+          <div className="relative h-[200px] w-[200px] rotate-[-25deg] sm:h-[240px] sm:w-[240px]">
+            <Image
+              src="/photo/photo-promo.png"
+              alt="Креветка на вилке"
+              fill
+              sizes="240px"
+              className="object-contain"
+            />
+          </div>
         </div>
 
+        {/* Фото на планшете/десктопе — по центру снизу */}
         <div className="pointer-events-none absolute bottom-0 left-1/2 hidden -translate-x-1/2 md:bottom-[-20px] md:block lg:bottom-[-30px] xl:bottom-[-40px]">
-          <img
-            src="/photo/photo-promo.png"
-            alt="Креветка на вилке"
-            className="h-[280px] w-auto object-contain lg:h-[380px] xl:h-[500px]"
-          />
+          <div className="relative h-[280px] w-[280px] lg:h-[380px] lg:w-[380px] xl:h-[500px] xl:w-[500px]">
+            <Image
+              src="/photo/photo-promo.png"
+              alt="Креветка на вилке"
+              fill
+              sizes="(max-width: 1024px) 280px, (max-width: 1280px) 380px, 500px"
+              className="object-contain"
+            />
+          </div>
 
           <div
             aria-hidden
@@ -53,22 +67,22 @@ export default function Promo() {
               деликатесами, приготовленными специально для вас
             </p>
 
-            <button
-              type="button"
+            <Link
+              href="/menu"
               className="
-    mt-[20px] flex h-[64px] w-full items-center justify-center
-    bg-[#E9663D] ring-1 ring-inset ring-transparent
-    font-sans text-[20px] font-medium leading-[140%] text-white
-    transition-colors duration-200
-    hover:bg-[#011845] hover:text-[#E8EDFF] hover:ring-[#E8EDFF]
-    min-[450px]:w-[240px]
-    md:mt-[30px] md:h-[50px] md:w-[160px]
-    lg:h-[64px] lg:w-[220px]
-    xl:h-[74px] xl:w-[285px]
-  "
+                mt-[20px] flex h-[64px] w-full items-center justify-center
+                bg-[#E9663D] ring-1 ring-inset ring-transparent
+                font-sans text-[20px] font-medium leading-[140%] text-white
+                transition-colors duration-200
+                hover:bg-[#011845] hover:text-[#E8EDFF] hover:ring-[#E8EDFF]
+                min-[450px]:w-[240px]
+                md:mt-[30px] md:h-[50px] md:w-[160px]
+                lg:h-[64px] lg:w-[220px]
+                xl:h-[74px] xl:w-[285px]
+              "
             >
               Меню
-            </button>
+            </Link>
           </div>
 
           <ul className="order-4 mt-[20px] flex flex-col gap-4 md:order-none md:col-start-3 md:row-start-2 md:mb-[40px] md:mt-[30px] md:gap-3 md:self-end lg:mb-[60px] lg:mt-[40px] lg:gap-5 lg:ml-[20px] xl:mb-[80px] xl:ml-[40px] xl:gap-6">
@@ -92,12 +106,14 @@ function Feature({ text, iconSrc }) {
     <li className="flex items-start gap-3 md:gap-2 lg:gap-3 xl:gap-5">
       <span
         aria-hidden
-        className="mt-0.5 flex h-[20px] w-[20px] shrink-0 items-center justify-center text-heading md:h-[24px] md:w-[24px] lg:h-[32px] lg:w-[32px] xl:h-[44px] xl:w-[44px]"
+        className="relative mt-0.5 flex h-[20px] w-[20px] shrink-0 items-center justify-center text-heading md:h-[24px] md:w-[24px] lg:h-[32px] lg:w-[32px] xl:h-[44px] xl:w-[44px]"
       >
-        <img
+        <Image
           src={iconSrc}
           alt=""
-          className="h-[20px] w-[20px] object-contain md:h-[24px] md:w-[24px] lg:h-[32px] lg:w-[32px] xl:h-[44px] xl:w-[44px]"
+          fill
+          sizes="44px"
+          className="object-contain"
         />
       </span>
       <p className="font-sans text-[12px] font-normal leading-[140%] text-heading md:text-[11px] lg:text-[14px] xl:text-[16px]">

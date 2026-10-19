@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import Container from "@/components/Container";
 
 const contacts = [
@@ -26,7 +28,7 @@ export default function Contacts() {
   return (
     <section className="relative z-0 overflow-x-clip py-16 min-[600px]:py-20 lg:py-24">
       <Container className="relative">
-        {/* Заголовок — маленький до 1100px, крупный от 1100px */}
+        {/* Заголовок */}
         <h2 className="mb-10 font-serif text-[24px] font-medium uppercase leading-[1.05] text-heading min-[600px]:text-[24px] min-[1100px]:text-[56px] lg:mb-16">
           <div className="flex flex-col items-start gap-2 min-[1100px]:flex-row min-[1100px]:items-center min-[1100px]:gap-[120px]">
             <span className="shrink-0 font-sans text-xs font-medium normal-case text-heading">
@@ -37,14 +39,16 @@ export default function Contacts() {
           <span className="block">объединяющая людей</span>
         </h2>
 
-        {/* Контент: 2 колонки с планшета, растянуты по высоте */}
+        {/* Контент */}
         <div className="grid grid-cols-1 gap-8 min-[600px]:grid-cols-[1fr_1fr] min-[600px]:items-stretch min-[600px]:gap-6 min-[1100px]:gap-16">
-          {/* ФОТО — заполняет всю высоту колонки */}
-          <div className="min-[600px]:h-full">
-            <img
+          {/* ФОТО — Image с fill */}
+          <div className="relative min-h-[300px] w-full min-[600px]:h-full">
+            <Image
               src="/photo/Contacts_img.png"
               alt="Атмосфера ресторана"
-              className="h-full w-full object-cover"
+              fill
+              sizes="(max-width: 600px) 100vw, 50vw"
+              className="object-cover"
             />
           </div>
 
@@ -105,9 +109,9 @@ function ContactItem({ icon, text, href }) {
     <div className="flex items-center gap-2">
       <span
         aria-hidden
-        className="flex h-4 w-4 shrink-0 items-center justify-center min-[1100px]:h-7 min-[1100px]:w-7"
+        className="relative flex h-4 w-4 shrink-0 items-center justify-center min-[1100px]:h-7 min-[1100px]:w-7"
       >
-        <img src={icon} alt="" className="h-full w-full object-contain" />
+        <Image src={icon} alt="" fill sizes="28px" className="object-contain" />
       </span>
       <span className="font-sans text-[12px] leading-[1.4] text-heading min-[600px]:text-[12px] min-[1100px]:text-[18px]">
         {text}
@@ -135,18 +139,21 @@ function SocialItem({ icon, label, href }) {
         href={href}
         aria-label={label}
         className="
-          flex h-[38px] w-[38px] items-center justify-center
-          bg-decor
-          transition-opacity hover:opacity-80
+          relative flex h-[38px] w-[38px] items-center justify-center
+          bg-decor transition-opacity hover:opacity-80
           min-[600px]:h-[42px] min-[600px]:w-[42px]
           min-[1100px]:h-[60px] min-[1100px]:w-[60px]
         "
       >
-        <img
-          src={icon}
-          alt=""
-          className="h-6 w-6 object-contain min-[600px]:h-7 min-[600px]:w-7 min-[1100px]:h-11 min-[1100px]:w-11"
-        />
+        <div className="relative h-6 w-6 min-[600px]:h-7 min-[600px]:w-7 min-[1100px]:h-11 min-[1100px]:w-11">
+          <Image
+            src={icon}
+            alt=""
+            fill
+            sizes="44px"
+            className="object-contain"
+          />
+        </div>
       </a>
     </li>
   );
