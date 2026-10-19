@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const navLinks = [
@@ -51,8 +52,18 @@ export default function Header() {
 
         <div className="flex items-center gap-4">
           <div className="hidden lg:block">
-            <Link href="/cart" aria-label="Корзина">
-              <img src="/icons/cart.svg" alt="" className="h-8 w-8" />
+            <Link
+              href="/cart"
+              aria-label="Корзина"
+              className="relative block h-8 w-8"
+            >
+              <Image
+                src="/icons/cart.svg"
+                alt=""
+                fill
+                sizes="32px"
+                className="object-contain"
+              />
             </Link>
           </div>
 
