@@ -102,7 +102,7 @@ export default function Menu({
                 }
               `}
             >
-              {/* ФОТО — Image с fill */}
+              {/* ФОТО */}
               <div className="relative order-1 flex justify-center min-[600px]:order-2 min-[600px]:justify-end">
                 <div
                   className="
@@ -144,8 +144,9 @@ export default function Menu({
                   )}
                 </div>
 
-                <button
-                  type="button"
+                {/* Кнопка-ссылка на детальную страницу */}
+                <Link
+                  href={`/menu/${dish.slug}`}
                   className="
                     mt-2 flex h-[52px] w-full items-center justify-center
                     min-[600px]:mt-0 min-[600px]:h-[45px] min-[600px]:w-[140px]
@@ -157,8 +158,8 @@ export default function Menu({
                     hover:border-[#E8EDFF] hover:bg-[#011845] hover:text-[#E8EDFF]
                   "
                 >
-                  {dish.buttonLabel || "В корзину"}
-                </button>
+                  {dish.buttonLabel || "Подробнее"}
+                </Link>
 
                 {/* СТРЕЛКИ ПОД КНОПКОЙ — ТОЛЬКО НА МОБИЛКЕ */}
                 {dishes.length > 1 && (

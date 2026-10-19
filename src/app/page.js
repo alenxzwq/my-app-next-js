@@ -9,6 +9,7 @@ import Contacts from "@/components/sections/contacts";
 const menuDishes = [
   {
     id: 1,
+    slug: "morskoy-briz",
     title: "Морской бриз",
     description:
       "Тарелка морепродуктов, включающая сочные кусочки краба, ароматные креветки и нежные мидии, подается с фирменным соусом и свежими зелеными травами.",
@@ -16,9 +17,9 @@ const menuDishes = [
     weight: "150 г",
     image: "/photo/dishes_slider_1.png",
   },
-
   {
     id: 2,
+    slug: "morskoy-briz-2",
     title: "Морской бриз",
     description:
       "Тарелка морепродуктов, включающая сочные кусочки краба, ароматные креветки и нежные мидии, подается с фирменным соусом и свежими зелеными травами.",
@@ -31,6 +32,7 @@ const menuDishes = [
 const promoDishes = [
   {
     id: 1,
+    slug: "skidka-15",
     title: "Скидка 15% на первый заказ",
     description:
       "Воспользуйтесь этой прекрасной возможностью и откройте для себя мир изысканных морских деликатесов, которыми славится наш ресторан",
@@ -41,6 +43,7 @@ const promoDishes = [
   },
   {
     id: 2,
+    slug: "skidka-15-2",
     title: "Скидка 15% на первый заказ",
     description:
       "Воспользуйтесь этой прекрасной возможностью и откройте для себя мир изысканных морских деликатесов, которыми славится наш ресторан",
@@ -49,7 +52,6 @@ const promoDishes = [
     image: "/photo/dishes_slider_2.png",
     buttonLabel: "Забрать скидку",
   },
-  // ...
 ];
 
 export default function Home() {
